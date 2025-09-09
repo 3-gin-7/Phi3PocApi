@@ -10,11 +10,10 @@ builder.Services.AddPhiModel(Path.Combine(builder.Environment.ContentRootPath, @
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-app.RegisterApiEndpoints();
+app.RegisterApiEndpoints(builder.Configuration);
 
-app.MapGet("/", () => {
-    Console.WriteLine("hey");
-    Results.Ok("working");
+app.MapGet("/ping", () => {
+    return Results.Ok("pong");
 });
 
 app.Run();

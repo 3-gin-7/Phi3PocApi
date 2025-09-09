@@ -16,7 +16,7 @@ public class PhiService : IPhiService
         _tokenizer = tokenizer;
     }
 
-    public async Task<(string?,string?)> ProcessPrompt(string prompt)
+    public (string?,string?) ProcessPrompt(string prompt)
     {
         var sw = new Stopwatch();
 
@@ -25,35 +25,31 @@ public class PhiService : IPhiService
             sw.Start();
             Console.WriteLine($"prompt is: {prompt}");
 
-            int cpuCount = Environment.ProcessorCount;
-            Console.WriteLine($"Number of logical processors: {cpuCount}");
-
             var tokens = _tokenizer.Encode(prompt);
 
             var generatorParams = new GeneratorParams(_model);
-
             generatorParams.SetSearchOption("max_length", 2048);
             generatorParams.SetInputSequences(tokens);
             generatorParams.TryGraphCaptureWithMaxBatchSize(1);
 
             using var tokenizerStream = _tokenizer.CreateStream();
             using Generator generator = new(_model, generatorParams);
+
             StringBuilder stringBuilder = new StringBuilder();
             while (!generator.IsDone())
             {
                 string part;
-                // await Task.Delay(10).ConfigureAwait(false);
                 generator.ComputeLogits();
                 generator.GenerateNextToken();
+
                 part = tokenizerStream.Decode(generator.GetSequence(0)[^1]);
                 stringBuilder.Append(part);
             }
 
             sw.Stop();
-            sw.Stop();
             Console.WriteLine($"Done in {sw.Elapsed}");
 
-            return (stringBuilder.ToString(), null);
+            return (stringBuilder.ToString().TrimStart(), null);
         }
         catch (Exception ex)
         {
