@@ -16,7 +16,7 @@ public class PhiService : IPhiService
         _tokenizer = tokenizer;
     }
 
-    public async Task<(string?,string?)> ProcessPrompt(string prompt)
+    public (string?,string?) ProcessPrompt(string prompt)
     {
         var sw = new Stopwatch();
 

@@ -27,7 +27,7 @@ public static class ApiExtensions
     {
         var prompt = $"<|user|>{request.Prompt}<|end|><|assistant|>";
 
-        var (data, err) = await phiService.ProcessPrompt(prompt);
+        var (data, err) = phiService.ProcessPrompt(prompt);
 
         if (!string.IsNullOrEmpty(err))
         {
