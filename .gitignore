@@ -1,0 +1,62 @@
+# .NET build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Logs
+*.log
+
+# Entity Framework
+Migrations/
+
+# Publish results
+publish/
+*.publish.xml
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Others
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+
+# Local secrets
+secrets.json
+
+# App settings for development
+appsettings.Development.json
+
+# AIModel folder
+AIModel/
