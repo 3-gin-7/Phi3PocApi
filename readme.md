@@ -51,3 +51,17 @@ dotnet .\Phi3PocApi.dll
 
 ##### Firewall
 - (in powershell) New-NetFirewallRule -DisplayName "Phi3Api-80" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow
+
+#### VM start up service configuration
+
+install NSSM (https://nssm.cc/download)
+
+copy the nssm.exe to the VM
+
+```
+./nssm install phi3-api
+```
+
+Path: path to dotnet.exe - e.g: C:\Program Files\dotnet\dotnet.exe
+Startup Directory: path to Phi3PocApi.dll - e.g: C:\publish
+Arguments: Phi3PocApi.dll
