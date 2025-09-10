@@ -15,6 +15,11 @@ Thumbs.db
 
 # Visual Studio Code
 .vscode/
+.vs/
+
+.config/
+
+Properties/PublishProfiles/*
 
 # Rider
 .idea/
