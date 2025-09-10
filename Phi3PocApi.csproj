@@ -10,4 +10,11 @@
     <PackageReference Include="Microsoft.ML.OnnxRuntimeGenAI" Version="0.5.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="AIModel\**" />
+    <None Remove="AIModel\**" />
+
+    <Folder Include="AIModel\" />
+  </ItemGroup>
+
 </Project>
